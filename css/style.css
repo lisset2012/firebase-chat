@@ -1,0 +1,167 @@
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    /* align-items: column; */
+    flex-direction: column;
+    border: 1px solid black;
+    /* background-color: aquamarine; */
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    /* background-color: pink; */
+    align-items: center;
+    width: 100%;   
+    height: 100px;
+}
+
+.logo{
+    height: 180px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+    
+
+    /* background-color: blueviolet; */
+}
+
+
+/* sign-in screen */
+
+#email-in{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 20px;
+    margin: -20px 0 20px 100px;
+    align-items: flex-end;
+    width: 100%;
+    color: #9ccf8a;
+}
+
+#pass-in{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 15px;
+    margin: -20px 0 20px 100px;
+    align-items: flex-end;
+    width: 80%;
+}
+
+.btn-container-inscreen{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex:1;
+    align-items: center;
+    width: 80%;
+    
+    /* background-color: brown; */
+}
+
+#signin-btn{
+    width: 100%;
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #9ccf8a;
+}
+
+#signup-btn{
+    width: 100%;
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #7d7773;
+}
+
+
+
+
+
+
+
+/* sign-up screen */
+
+.input-container-up{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+}
+
+#email{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 20px;
+    margin: -20px 0 20px 100px;
+    align-items: flex-end;
+    width: 100%;
+    color: #9ccf8a;
+}
+
+#pass{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 15px;
+    margin: -20px 0 20px 100px;
+    align-items: flex-end;
+    width: 100%;
+}
+
+#pass_confirmation{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 15px;
+    margin: -20px 0 20px 100px;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex:1;
+    align-items: center;
+    width: 100%;
+    
+    /* background-color: brown; */
+}
+
+#sign-up-btn{
+    width: 100%;
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #7d7773;
+}
+
+
+.loader{
+    animation: 
+}
+
+
+
+
+
+/* ******************************************** */
+

@@ -1,0 +1,15 @@
+{
+  "name": "fire_base_chat",
+  "version": "1.0.0",
+  "description": "fire base chat",
+  "private": true,
+  "scripts": {
+    "test": "test",
+    "start": "reload -b --port 8025"
+  },
+  "author": "Lisset Torres",
+  "license": "ISC",
+  "dependencies": {
+    "reload": "^2.3.0"
+  }
+}
