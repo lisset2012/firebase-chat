@@ -16,28 +16,38 @@ function SignUpScreen(){
 
     container.innerHTML = `
     <div class="container">
-        
-        <div class="logo-container">
-            <img src="./img/logo-whitebg.png" alt="" class="logo">
-        </div>
 
-        <div class="input-container-up">
-            <input type="email" id="email" placeholder="Email">
-            <input type="password" name="" id="password" placeholder="Password">        
-            <input type="password" name="" id="pass-confirmation" placeholder="Confirm your password">                   
-        </div>
+    <div class = "backbtn"><i id = "go-back-btn" class="fas fa-chevron-left"></i></div>
 
-        <div class="btn-container">
-            <div id = "go-back-btn"> <i class="icon ion-md-arrow"></i> </div>
-            <button id="sign-up-btn" class="btn ">SIGN UP</button>
-        </div>
+    <div class="logo-container">
+        <img src="./img/logo-pollo.png" alt="" class="logo">
     </div>
+
+    <h6 color: "">POLLO CHAT</h6>
+
+    <div class="input-container">
+         
+        <input type="email" id="email-in" placeholder="Email">
+        <input type="password" name="" id="pass-in" placeholder="Password">
+                
+    </div>
+
+    <div class="icons-container">
+        <button id="google_auth" class="auth-icon icon ion-logo-google"></button>
+        <button id="facebook_auth" class="auth-icon icon ion-logo-facebook"></button>
+    </div>
+
+    <div class="btn-container-inscreen">
+        <button id="signin-btn" class="btn ">SIGN IN</button>
+        <button id="signup-btn" class="btn ">SIGN UP</button>
+    </div>
+</div>
 `;
     return container;
 }
 
 function initializeSignUpScreenEventListeners(){
-    // $('#google_auth').on('click', googleAuth);
+    $('#google_auth').on('click', googleAuth);
     $('#go-back-btn').on('click', goBack);
 
     $('#sign-up-btn').on('click', signUp)

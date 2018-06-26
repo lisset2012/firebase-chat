@@ -4,8 +4,8 @@ function signUp(){
     let passConfirmation = $('#pass-confirmation').val();
 
     // console.log('email',email);
-    // console.log('password',password);
-    // console.log('pass-confirmation',passConfirmation);
+    console.log('password',password);
+    console.log('pass-confirmation',passConfirmation);
 
     if(!isvalidEmail(email)){
         alert('Invalid email');
@@ -13,13 +13,24 @@ function signUp(){
     else if (!isValidPassword(password)){
         alert('Invalid password');
     }
-    else if (!password !== passConfirmation){
+    else if (password !== passConfirmation){
         alert('Password do not match');
     }
     else{
+
         firebase.auth().createUserWithEmailAndPassword(email,password)
         .then(function(result){
-            console.log('created account');
+
+            var user = firebase.auth().currentUser;
+
+            user.updateProfile({
+                displayName:name,
+            }).then(function(){
+                //update succefull
+                navigate('chat-screen',user);
+            }).catch(function(error){
+                //an error happened
+            });
         })
         .catch(function(error){
             //Handle error here
@@ -29,4 +40,17 @@ function signUp(){
             alert(errorMessage);
         });
     }
+}
+
+function emailAndPasswordAuth(){
+    let email = $('#email').val();
+    let password =  $('#password').val();
+
+    firebase.auth().signInWithEmailAndPassword(email,password).catch(function(error){
+        //handle errors here
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        alert(errorMessage);
+    })
 }

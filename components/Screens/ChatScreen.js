@@ -1,3 +1,6 @@
+let db = firebase.database();//stablishing a conection en Firebase;
+let messages = db.ref('messages/');//create a collection
+
 function buildChatScreen(user){
     
     $('#loading-screen, #sign-up-screen, #chat-screen').fadeOut("fast",function(){
@@ -17,37 +20,122 @@ function ChatScreen(user){
 
     container.innerHTML = `
     
-    <div class="chat-header">Hi ${user.displayName.split(' ')[0]}!
-        <i id = "sign-out" class="fas fa-sign-out-alt"></i>
-    </div>
+    <div class="chat-header">Hi ${user.displayName}!</div>
+    
+        <div class=""><i id = "sign-out" class="fas fa-sign-out-alt"></i></div>
+
+        <div 
+            class="chat-screen-messages-container">
+        </div>
+
+        <div class="chat-screen-input-container">
+            <div 
+            id="chat-screen-send-msg-btn"
+            class="chat-screen-send-msg-btn">
+            <i class=" send fas fa-share-square"></i>
+            </div>
+
+            <input type="text" id = "chat-screen-input" class = "chat-screen-input"/>
+            
+        </div>
    `;
     return container;
 }
 
 function initializeChatScreenEventListeners(user){
-    // $('#google_auth').on('click', googleAuth);
+    $('#sign-out').on("click",signOut);
+
+    $('#chat-screen-send-msg-btn').on("click",function(){
+        sendMessage(user.uid, user.displayName, user.email, user.photoURL);
+        
+    });
+    $('#chat-screen-input').keypress(function(e){
+        if(e.keyCode === 13){
+            sendMessage(user.uid, user.displayName, user.email, user.photoURL);
+        
+        }
+    
+    }).keyup(function(){
+        //some cool staff
+    });
 }
 
-//************************************************************** */Jhonny's code
-// function buildChatScreen(user){
-//     $('#loading-screen, #sign-in-screen').fadeOut("slow", function(){
-//         $('#root').html(ChatScreen(user));
-//         intializeChatScreenEventListeners(user);
-//     });
-//  }
-//  function ChatScreen(user){
-//     const container = document.createElement('div');
-//     container.id = 'chat-screen';
-//     container.classList.add('chat-screen');
+function sendMessage(uid,name,email,img){
+    let date = new Date();
+    let text = $("#chat-screen-input").val();
+    console.log('sendig message', text);
+}
+
+    messages.on('value', function (snapshot) {
+        //console.log(snapshot.val());
+        $("#messages").html("");
+        let msgs = snapshot.val();
     
-    
-//     container.innerHTML = `
-//     Chat screen user ${user.displayName}
-//     `;
-    
-//     return container;
-//  }
- 
-    
-//  function intializeChatScreenEventListeners(user){
-//  }
+        for (let id in msgs) {
+          let msg = msgs[id];
+          let side = user.email === msg.email ? 'right' : 'left';
+          let margin = user.email === msg.email ? 'margin-left: 15px;':'margin-right:15px';
+          let corner = user.email === msg.email ? 'right-top' : 'left-top'
+
+          $("#messages").append(
+            `
+              <div class="msg-div ${side}">
+                  <div style = ""${margin}>
+                  <img class = "profile-img" src="${msg.img || '../../img/photo.jpg'}" height = "40" width = "auto"/>
+              </div>
+              <div style = "flex-grow: 1; padding: 10px; class = "talk-bubbletri-right ${corner}">
+              <div class = "name"><strong>${msg-name}</strong></div>
+            `
+          );
+        }
+        scroll();
+      });
+
+function sendMessage(uid, name, email, img){
+    let date = new Date();
+    let text = $('#chat-screen-input').val();
+
+    console.log('sending message',text);
+
+    if(text){
+        messages.push({
+            uid: uid,
+            name: name,
+            text: text,
+            date: date.toString(),
+            email: email,
+            img: img
+        });
+        $("#chat-screen-input").val('');
+    }
+}
+
+function scroll(){
+    $('#chat-screen-messages-container').scrollTop($('#chat-screen-messages-container')[0].scrollHeight);
+}
+
+let format = {
+    date: (date) => {
+      let d = date.getDate();
+      let m = date.getMonth() + 1;
+      let y = date.getFullYear();
+  
+      let h = date.getHours();
+  
+      let hf = (h > 11) ? 'PM' : 'AM';
+      let hh = (h > 12) ? h % 12 : h;
+      let mm = date.getMinutes();
+      let ss = date.getSeconds();
+  
+      if (d < 10) d = '0' + d;
+      if (m < 10) m = '0' + m;
+      if (hh < 10) hh = '0' + hh;
+      if (mm < 10) mm = '0' + mm;
+      if (ss < 10) ss = '0' + ss;
+  
+      return {
+        date: m + '/' + d + '/' + y,
+        time: hh + ':' + mm + ':' + ss + ' ' + hf
+      };
+    }
+  }

@@ -3,6 +3,156 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
+/* loading-screen */
+
+#loader-container {
+    background-color: #f8cd1f;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+  }
+  
+  .loader {
+    width: 3em;
+    height: 3em;
+    animation: loaderAnim 1.25s infinite ease-in-out;
+    outline: 1px solid transparent;display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8cd1f;
+  }
+  .loader #largeBox {
+    height: 3em;
+    width: 3em;
+    background-color: #ECECEC;
+    outline: 1px solid transparent;
+    position: fixed;
+  }
+  .loader #smallBox {
+    height: 3em;
+    width: 3em;
+    background-color: #f8cd1f;
+    position: fixed;
+    z-index: 1;
+    outline: 1px solid transparent;
+    animation: smallBoxAnim 1.25s alternate infinite ease-in-out;
+  }
+  
+  @keyframes smallBoxAnim {
+    0% {
+      transform: scale(0.2);
+    }
+    100% {
+      transform: scale(0.75);
+    }
+  }
+  @keyframes loaderAnim {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(90deg);
+    }
+  }
+
+/* sign-in screen */
+
+.back-icon{
+    display: flex;
+    align-self: flex-start;
+}
+
+.logo{
+    margin-top: 11px;
+    width: 314px;
+    height: auto;
+}
+
+.icons-container{
+    display: flex;
+    justify-content: center;
+}
+
+.google-icon{
+    margin-right: 100px;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+#email-in{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    width: 100%;
+    color: #439ef7;
+}
+
+#pass-in{
+    /* margin-top: 20px; */
+    margin-bottom: 55px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    width: 100%;
+    color: #439ef7;
+}
+
+#signin-btn{
+    width: 100vw;
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #f8cd1f;
+}
+
+#signup-btn{
+    width: 100vw;
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #7d7773;
+}
+
+.btn{
+    width: 100vw;
+}
+
+/* end of the sign in screen */
+
+#name{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 20px;
+    margin: -20px 0 20px 100px;
+    align-items: flex-end;
+    width: 100%;
+    color: #9ccf8a;
+}
+
+#sign-out{
+    width: 100%;
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #7d7773;
+}
+
+
+
+
 .container {
     height: 100vh;
     display: flex;
@@ -13,6 +163,11 @@ body{
     flex-direction: column;
     border: 1px solid black;
     /* background-color: aquamarine; */
+}
+
+.backbtn{
+    width: 100px;
+    height: auto;
 }
 
 .logo-container {
@@ -26,7 +181,9 @@ body{
 }
 
 .logo{
-    height: 180px;
+    margin: 50px;
+    width: 180px;
+    height: auto;
 }
 
 .input-container {
@@ -36,59 +193,11 @@ body{
     align-items: center;
     justify-content: center;
     align-content: space-between;
-    
-
-    /* background-color: blueviolet; */
 }
 
 
-/* sign-in screen */
 
-#email-in{
-    border: none;
-    border-bottom: 1px solid black;
-    padding: 20px;
-    margin: -20px 0 20px 100px;
-    align-items: flex-end;
-    width: 100%;
-    color: #9ccf8a;
-}
 
-#pass-in{
-    border: none;
-    border-bottom: 1px solid black;
-    padding: 15px;
-    margin: -20px 0 20px 100px;
-    align-items: flex-end;
-    width: 80%;
-}
-
-.btn-container-inscreen{
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex:1;
-    align-items: center;
-    width: 80%;
-    
-    /* background-color: brown; */
-}
-
-#signin-btn{
-    width: 100%;
-    padding: 20px;
-    border: none;
-    color: white;
-    background-color: #9ccf8a;
-}
-
-#signup-btn{
-    width: 100%;
-    padding: 20px;
-    border: none;
-    color: white;
-    background-color: #7d7773;
-}
 
 
 
@@ -155,13 +264,109 @@ body{
 }
 
 
-.loader{
+/* .loader{
     animation: 
-}
+} */
 
 
 
 
 
 /* ******************************************** */
+.chat-screen-input-container{
+    
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* chat screen */
+.chat-screen{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-reader{
+    height: 50px;
+    padding: 0px 10px;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+}
+
+.sign-out-btn{
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.chat-screen-messages-container{
+    flex:1;
+    background-color: #00C4FF;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.chat-screen-input-container{
+    height: 50px;
+    width: 100%;
+    border-top: 2px solid;
+    position: relative;
+    display: flex;
+}
+
+.chat-screen-input{
+    height: 100%;
+    font-size: 16px;
+    flex: 1;
+}
+
+.chat-screen-send-msg-btn{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+  
