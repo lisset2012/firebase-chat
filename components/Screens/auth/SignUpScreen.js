@@ -11,43 +11,43 @@ function buildSignUpScreen(){
 function SignUpScreen(){
     const container = document.createElement('div');
 
-    container.id = 'chat-screen';
+    container.id = 'sign-up-screen';
     container.classList.add('sign-up-screen');
 
     container.innerHTML = `
     <div class="container">
 
-    <div class = "backbtn"><i id = "go-back-btn" class="fas fa-chevron-left"></i></div>
+        <span style="font-size: 2em; color: black; margin: 25px;" class="back-icon">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+            
+        <div class="logo-container">
+            <img src="./img/logo-pollo.png" alt="" class="logo">
+        </div>
 
-    <div class="logo-container">
-        <img src="./img/logo-pollo.png" alt="" class="logo">
+        <h6 style="margin-top: 56; padding-top:30px;">POLLO CHAT</h6>
+
+        <div class="input-container">
+            <div><input type="text" class="name" placeholder="Name"></div>
+            <div><input type="email" class="email" placeholder="Email"></div>
+            <div><input type="password" class="pass" placeholder="Password"></div>
+            <div><input type="password" class="pass-conf" placeholder="Password"></div>
+        </div>
+
+        <div class="btn-container">
+            <button id="" class="signup-btn ">SIGN UP</button>
+        </div>
+
     </div>
-
-    <h6 color: "">POLLO CHAT</h6>
-
-    <div class="input-container">
-         
-        <input type="email" id="email-in" placeholder="Email">
-        <input type="password" name="" id="pass-in" placeholder="Password">
-                
-    </div>
-
-    <div class="icons-container">
-        <button id="google_auth" class="auth-icon icon ion-logo-google"></button>
-        <button id="facebook_auth" class="auth-icon icon ion-logo-facebook"></button>
-    </div>
-
-    <div class="btn-container-inscreen">
-        <button id="signin-btn" class="btn ">SIGN IN</button>
-        <button id="signup-btn" class="btn ">SIGN UP</button>
-    </div>
-</div>
 `;
     return container;
 }
 
 function initializeSignUpScreenEventListeners(){
     $('#google_auth').on('click', googleAuth);
+
+    $('#facebook_auth').on('click', facebookAuth);
+    
     $('#go-back-btn').on('click', goBack);
 
     $('#sign-up-btn').on('click', signUp)

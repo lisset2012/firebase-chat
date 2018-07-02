@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- awesome font library -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="testChatScreen.css" />
+</head>
+<body>
+
+        <!-- <div class="container">
+                <img src="/w3images/bandmember.jpg" alt="Avatar">
+                <p>Hello. How are you today?</p>
+                <span class="time-right">11:00</span>
+        </div> -->
+    
+        <div id="messages_inside">
+                <div class="container">
+                        <div class="name"><strong>${msg.name}</strong>:</div>
+                        <img class="profile-img" src="img/Blank-frame.jpg"/>
+                        <div class="msg">${msg.text}</div>
+                                            
+                        <div class="date">
+                            <div>${format.date(new Date(msg.date)).date}</div>
+                            <div>${format.date(new Date(msg.date)).time}</div>
+                        </div>
+                </div>
+        </div>
+
+    <!-- <script src="main.js"></script> -->
+    
+</body>
+</html>

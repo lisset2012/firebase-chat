@@ -3,7 +3,7 @@ let messages = db.ref('messages/');//create a collection
 
 function buildChatScreen(user){
     
-    $('#loading-screen, #sign-up-screen, #chat-screen').fadeOut("fast",function(){
+    $('#loading-screen, #sign-up-screen, #sign-in-screen').fadeOut("fast",function(){
         $('#root').html(ChatScreen(user));
         initializeChatScreenEventListeners(user);
     });
@@ -15,41 +15,31 @@ function ChatScreen(user){
     container.id = 'chat-screen';
     container.classList.add('chat-screen');
 
-    
-    //<!-- chat screen ${user.displayName} -->
-
     container.innerHTML = `
     
-    <div class="chat-header">Hi ${user.displayName}!</div>
-    
-        <div class=""><i id = "sign-out" class="fas fa-sign-out-alt"></i></div>
+    <div class="header-container">
+        <div class="chat-header">Hi  ${user.displayName}!</div>
+        <div><i class="fas fa-sign-out-alt sign-out"></i></div> 
+    </div>
 
-        <div 
-            class="chat-screen-messages-container">
-        </div>
+    <div class="chat-screen-messages-container"></div>
 
-        <div class="chat-screen-input-container">
-            <div 
-            id="chat-screen-send-msg-btn"
-            class="chat-screen-send-msg-btn">
-            <i class=" send fas fa-share-square"></i>
-            </div>
-
-            <input type="text" id = "chat-screen-input" class = "chat-screen-input"/>
-            
-        </div>
+    <div class="chat-screen-input-container">
+        <input type="text" class="chat-screen-input"/>
+        <div class="chat-screen-send-msg-btn"><i class=" send fas fa-share-square"></i></div>
+    </div>
    `;
     return container;
 }
 
 function initializeChatScreenEventListeners(user){
-    $('#sign-out').on("click",signOut);
+    $('.sign-out').on("click",signOut);
 
-    $('#chat-screen-send-msg-btn').on("click",function(){
+    $('.chat-screen-send-msg-btn').on("click",function(){
         sendMessage(user.uid, user.displayName, user.email, user.photoURL);
         
     });
-    $('#chat-screen-input').keypress(function(e){
+    $('.chat-screen-input').keypress(function(e){
         if(e.keyCode === 13){
             sendMessage(user.uid, user.displayName, user.email, user.photoURL);
         
@@ -58,17 +48,10 @@ function initializeChatScreenEventListeners(user){
     }).keyup(function(){
         //some cool staff
     });
-}
 
-function sendMessage(uid,name,email,img){
-    let date = new Date();
-    let text = $("#chat-screen-input").val();
-    console.log('sendig message', text);
-}
-
-    messages.on('value', function (snapshot) {
+   messages.on('value', function (snapshot) {
         //console.log(snapshot.val());
-        $("#messages").html("");
+        $(".chat-screen-messages-container").html("");
         let msgs = snapshot.val();
     
         for (let id in msgs) {
@@ -77,23 +60,30 @@ function sendMessage(uid,name,email,img){
           let margin = user.email === msg.email ? 'margin-left: 15px;':'margin-right:15px';
           let corner = user.email === msg.email ? 'right-top' : 'left-top'
 
-          $("#messages").append(
+          $(".chat-screen-messages-container").append(
             `
-              <div class="msg-div ${side}">
-                  <div style = ""${margin}>
-                  <img class = "profile-img" src="${msg.img || '../../img/photo.jpg'}" height = "40" width = "auto"/>
-              </div>
-              <div style = "flex-grow: 1; padding: 10px; class = "talk-bubbletri-right ${corner}">
-              <div class = "name"><strong>${msg-name}</strong></div>
+            <div id="messages_inside">
+                <div class="container">
+                        <div class="name"><strong>${msg.name}</strong>:</div>
+                        <img class="profile-img" src="img/Blank-frame.jpg"/>
+                        <div class="msg">${msg.text}</div>
+                                            
+                        <div class="date">
+                            <div>${format.date(new Date(msg.date)).date}</div>
+                            <div>${format.date(new Date(msg.date)).time}</div>
+                        </div>
+                </div>
+            </div>
             `
           );
         }
         scroll();
       });
+    }
 
 function sendMessage(uid, name, email, img){
     let date = new Date();
-    let text = $('#chat-screen-input').val();
+    let text = $('.chat-screen-input').val();
 
     console.log('sending message',text);
 
@@ -106,12 +96,12 @@ function sendMessage(uid, name, email, img){
             email: email,
             img: img
         });
-        $("#chat-screen-input").val('');
+        $(".chat-screen-input").val('');
     }
 }
 
 function scroll(){
-    $('#chat-screen-messages-container').scrollTop($('#chat-screen-messages-container')[0].scrollHeight);
+    $('.chat-screen-messages-container').scrollTop($('.chat-screen-messages-container')[0].scrollHeight);
 }
 
 let format = {

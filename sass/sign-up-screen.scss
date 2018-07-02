@@ -1,0 +1,17 @@
+@import '_partial.scss';
+
+.back-icon{
+    // width: 100px;
+    // height: auto;
+    display: flex;
+    align-self: flex-start;
+}
+
+.pass-conf{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 15px;
+    margin: -20px 0 20px 100px;
+    align-items: flex-end;
+    width: 100%;
+}

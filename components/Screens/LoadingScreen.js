@@ -5,7 +5,7 @@ function buildLoadingScreen(){
 
         setTimeout(() => {
             session();
-    }, 4000);
+    }, 2000);
 
 }
 
@@ -15,10 +15,10 @@ function LoadingScreen(user){
     container.classList.add('loading-screen');
 
     container.innerHTML = `
-    <div id="loader-container">
+    <div class="loader-container">
         <div class="loader">
-            <div id="largeBox"></div>
-            <div id="smallBox"></div>
+            <div class="largeBox"></div>
+            <div class="smallBox"></div>
         </div>
     </div>`;
 return container;

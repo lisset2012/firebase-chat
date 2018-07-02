@@ -19,10 +19,6 @@ function SignInScreen(){
 
     <div class="container">
 
-        <span style="font-size: 2em; color: black; margin: 25px;" class="back-icon">
-            <i class="fas fa-chevron-left"></i>
-        </span>
-            
         <div class="logo-container">
             <img src="./img/logo-pollo.png" alt="" class="logo">
         </div>
@@ -30,18 +26,20 @@ function SignInScreen(){
         <h6 style="margin-top: 56; padding-top:30px;">POLLO CHAT</h6>
 
         <div class="icons-container">
-            <span style="font-size: 3em; color: #f8cd1f;" class="google-icon"><i class="fab fa-google-plus-square"></i></span>     
-            <span style="font-size: 3em; color: #f8cd1f;" class="facebook-icon"><i class="fab fa-facebook-square"></i></span>     
+            <span style="font-size: 3em; color: #f8cd1f;" class="google-icon">
+            <i id="google_auth" class="fab fa-google-plus-square"></i></span>     
+            <span style="font-size: 3em; color: #f8cd1f;" class="facebook-icon">
+            <i id="facebook_auth" class="fab fa-facebook-square"></i></span>     
         </div>     
         
         <div class="input-container">
-            <div><input type="email" id="email-in" placeholder="Email"></div>
-            <div><input type="password" id="pass-in" placeholder="Password"></div>
+            <div><input type="email" class="email" placeholder="Email"></div>
+            <div><input type="password" class="pass" placeholder="Password"></div>
         </div>
 
         <div class="btn-container-inscreen">
-            <button id="signin-btn" class="btn ">SIGN IN</button>
-            <button id="signup-btn" class="btn ">SIGN UP</button>
+            <button class="signin-btn">SIGN IN</button>
+            <button class="signup-btn">SIGN UP</button>
         </div>
 
     </div>`;
@@ -51,6 +49,10 @@ function SignInScreen(){
 function initializeSignInScreenEventListeners(){
     $('#google_auth').on("click", function(){
         createPersistantSession(googleAuth);
+    });
+
+    $('#facebook_auth').on("click", function(){
+        createPersistantSession(facebookAuth);
     });
 
     $('#signup-btn').on("click",function(){
