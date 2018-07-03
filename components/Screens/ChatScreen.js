@@ -16,17 +16,18 @@ function ChatScreen(user){
     container.classList.add('chat-screen');
 
     container.innerHTML = `
-    
-    <div class="header-container">
-        <div class="chat-header">Hi  ${user.displayName}!</div>
-        <div><i class="fas fa-sign-out-alt sign-out"></i></div> 
-    </div>
+    <div id="a-container" class="a-container">
+        <div class="header-container">
+            <div class="chat-header">Hi  ${user.displayName}!</div>
+            <div><i class="fas fa-sign-out-alt sign-out"></i></div> 
+        </div>
 
-    <div class="chat-screen-messages-container"></div>
+        <div class="chat-screen-messages-container"></div>
 
-    <div class="chat-screen-input-container">
-        <input type="text" class="chat-screen-input"/>
-        <div class="chat-screen-send-msg-btn"><i class=" send fas fa-share-square"></i></div>
+        <div class="chat-screen-input-container">
+            <input type="text" class="chat-screen-input"/>
+            <div class="chat-screen-send-msg-btn"><i class=" send fas fa-share-square"></i></div>
+        </div>
     </div>
    `;
     return container;
@@ -63,9 +64,9 @@ function initializeChatScreenEventListeners(user){
           $(".chat-screen-messages-container").append(
             `
             <div id="messages_inside">
-                <div class="container">
+                <div class="msg-container">
                         <div class="name"><strong>${msg.name}</strong>:</div>
-                        <img class="profile-img" src="img/Blank-frame.jpg"/>
+                        <img class="profile-img" src="${msg.img || img/Blank-frame.jpg}"/>
                         <div class="msg">${msg.text}</div>
                                             
                         <div class="date">
